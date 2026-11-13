@@ -1,14 +1,10 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 
-const SearchBarComponent = () => {
-
-    const [search, setSearch] = useState('');
-    const [filteredData, setFilteredData] = useState(data);
-
+const SearchBarComponent = ({ search, onChangeSearch, navigation }) => {
 
     const handleSearch = (text) => {
-        sestSeatch(text);
+        setSearch(text);
         const filtered = data.filter(item =>
             item.name.toLowerCase().includes(text.toLowerCase())
         );
@@ -22,6 +18,7 @@ const SearchBarComponent = () => {
                 placeholder="Enter location"
                 value={search}
                 onChangeText={handleSearch}
+                onPress={navigation.navigate("Search")}
             />
         </View>
     )

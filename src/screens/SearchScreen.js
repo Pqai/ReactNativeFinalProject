@@ -4,6 +4,9 @@ import SearchBarComponent from '../components/SearchBarComponent';
 
 const SearchScreen = () => {
 
+    const [search, setSearch] = useState('');
+    const [filteredData, setFilteredData] = useState(data);
+
     return (
         <View>
             <SearchBarComponent />
