@@ -9,7 +9,12 @@ const SearchScreen = () => {
 
     return (
         <View>
-            <SearchBarComponent />
+            <SearchBarComponent
+                term={search}
+                onChangeTerm={(newSearch) => {
+                    setSearch(newSearch);
+                }}
+            />
 
             <FlatList
 
