@@ -17,7 +17,13 @@ const SearchScreen = () => {
             />
 
             <FlatList
+                data={await}
+                keyExtractor={(k) => k.id}
+                renderItem={({ item }) => (
+                    <View>
 
+                    </View>
+                )}
             />
         </View>
     )
