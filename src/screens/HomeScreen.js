@@ -3,6 +3,22 @@ import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from "r
 
 const HomeScreen = () => {
 
+    const [yourCity, setCity] = useState("")
+
+    const getApiData = async (term) => {
+        try {
+            const responese = await WeatherLayer.get("/search", {
+
+                params: {
+
+                }
+            })
+        }
+        catch (error) {
+
+        }
+    }
+
     return (
         <View>
 
