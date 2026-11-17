@@ -1,22 +1,23 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const MainWeatherCardComponent = () => {
+const MainWeatherCardComponent = (city, country, temperature, measurementSystem) => {
 
     //put this in a touchableopacity on the home screen.
     return (
         <View style={styles.container}>
-            <View style={styles.textInformation}>
-                <Text>City</Text>
-                <Text>Country</Text>
+            <View style={styles.textInformationSide}>
+                <Text>{city}</Text>
+                <Text>{country}</Text>
 
-                <Text>Temperature</Text>
+                <Text>{temperature}</Text>
 
                 <TouchableOpacity>
-                    <Text>Farenheit</Text>
+                    <Text>{measurementSystem}</Text>
                 </TouchableOpacity>
             </View>
-            <View>
+
+            <View style={styles.weatherIcon}>
                 <Image />
             </View>
         </View>
@@ -27,7 +28,10 @@ const styles = StyleSheet.create({
     container: {
 
     },
-    textInformation: {
+    textInformationSide: {
+
+    },
+    weatherIcon: {
 
     }
 })

@@ -6,17 +6,8 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
 
-    const handleSearch = (text) => {
-        setSearch(text);
-        const filtered = data.filter(item =>
-            item.name.toLowerCase().includes(text.toLowerCase())
-        );
-        setFilteredData(filtered);
-    }
-
     return (
         <View>
-            {<BackButtonComponent />}
             <TextInput
                 style={styles.searchBar}
                 placeholder="Enter location"
@@ -27,7 +18,7 @@ const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
 
             <TouchableOpacity
                 style={styles.backButtonContainer}
-                onPress={() => searchCity}>
+                onPress={searchCity}>
                 <FontAwesome5 name="search" size={24} color="black" />
             </TouchableOpacity>
         </View>

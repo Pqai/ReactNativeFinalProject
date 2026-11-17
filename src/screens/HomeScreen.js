@@ -1,7 +1,9 @@
 import React, { useReducer, useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
+import SearchBarComponent from '../components/SearchBarComponent';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
 
     const [yourCity, setCity] = useState("")
     const [measurementSystem, setMeasurementSystem] = useState("Metric")
@@ -21,8 +23,22 @@ const HomeScreen = () => {
     }
 
     return (
-        <View>
+        <View style={styles.MainContainer}>
+            <Image />
 
+            <SearchBarComponent />
+
+            <Text>Your Weather</Text>
+            <View>{/**Dash Line */}</View>
+
+            <TouchableOpacity onPress={navigation.navigate("DetailedWeather")}> {/**Fix this later */}
+                <MainWeatherCardComponent
+                //city={ }
+                //country={ }
+                //temperature={ }
+                //measurementSystem={ }
+                />
+            </TouchableOpacity>
         </View>
     )
 }

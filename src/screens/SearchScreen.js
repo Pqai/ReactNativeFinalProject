@@ -1,8 +1,9 @@
 import React, { useReducer, useState, useEffect } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import SearchBarComponent from '../components/SearchBarComponent';
 import axios from 'axios';
 import WeatherLayer from '../api/WeatherLayer';
+import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
@@ -30,20 +31,30 @@ const SearchScreen = () => {
     }
 
     return (
-        <View>
-            <SearchBarComponent
-                term={search}
-                onChangeTerm={(newSearch) => {
-                    setSearch(newSearch);
-                }}
-            />
+        <View style={styles.MainContainer}>
+            <View style={styles.searchBar}>
+                <BackButtonComponent />
+
+                <SearchBarComponent
+                    term={search}
+                    onChangeTerm={(newSearch) => {
+                        setSearch(newSearch);
+                    }}
+                />
+
+            </View>
 
             <FlatList
                 data={await}
                 keyExtractor={(k) => k.id}
                 renderItem={({ item }) => (
-                    <View>
-
+                    <View style={styles.miniWeatherCard}>
+                        <MainWeatherCardComponent
+                            city={item.name}
+                            country={item.country}
+                            temperature={item.temperature}
+                        //Fix these later
+                        />
                     </View>
                 )}
             />
@@ -54,6 +65,14 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1
+    },
+    searchBar: {
+        backgroundColor: '#2f9680',
+        width: '70%',
+        marginTop: 20
+    },
+    miniWeatherCard: {
+
     }
 })
 
