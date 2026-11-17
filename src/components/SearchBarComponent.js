@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import BackButtonComponent from "./BackButtonComponent";
 
-const SearchBarComponent = ({ search, onChangeSearch, navigation }) => {
+const SearchBarComponent = ({ term, onChangeTerm, navigation }) => {
 
     const handleSearch = (text) => {
         setSearch(text);
@@ -13,6 +14,7 @@ const SearchBarComponent = ({ search, onChangeSearch, navigation }) => {
 
     return (
         <View>
+            {<BackButtonComponent />}
             <TextInput
                 style={styles.searchBar}
                 placeholder="Enter location"
