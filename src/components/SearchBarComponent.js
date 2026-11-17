@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import BackButtonComponent from "./BackButtonComponent";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+
 
 const SearchBarComponent = ({ term, onChangeTerm, navigation }) => {
 
@@ -22,6 +24,12 @@ const SearchBarComponent = ({ term, onChangeTerm, navigation }) => {
                 onChangeText={handleSearch}
                 onPress={navigation.navigate("Search")}
             />
+
+            <TouchableOpacity
+                style={styles.backButtonContainer}
+                onPress={() => }>
+                <FontAwesome5 name="search" size={24} color="black" />
+            </TouchableOpacity>
         </View>
     )
 }

@@ -11,12 +11,16 @@ const SearchScreen = () => {
 
     const getApiData = async (term) => {
         try {
-            const response = await WeatherLayer.get("/search", {
+            const response = await WeatherLayer.get("/data/2.5/weather", {
                 params: {
-
+                    lat: 10,
+                    lon: 10,
+                    appid: example
                 }
             }),
-                setCity(response.data.search);
+                settheCity(response.data.search);
+
+            console.log("Search completed");
 
         } catch (error) {
             console.error("API error:", error);
