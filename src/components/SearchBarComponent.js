@@ -4,7 +4,7 @@ import BackButtonComponent from "./BackButtonComponent";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 
-const SearchBarComponent = ({ term, onChangeTerm, navigation }) => {
+const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
 
     const handleSearch = (text) => {
         setSearch(text);
@@ -20,14 +20,14 @@ const SearchBarComponent = ({ term, onChangeTerm, navigation }) => {
             <TextInput
                 style={styles.searchBar}
                 placeholder="Enter location"
-                value={search}
-                onChangeText={handleSearch}
-                onPress={navigation.navigate("Search")}
+                value={term}
+                onChangeText={onChangeTerm}
+                onPress={() => navigation.navigate("Search")}
             />
 
             <TouchableOpacity
                 style={styles.backButtonContainer}
-                onPress={() => }>
+                onPress={() => searchCity}>
                 <FontAwesome5 name="search" size={24} color="black" />
             </TouchableOpacity>
         </View>

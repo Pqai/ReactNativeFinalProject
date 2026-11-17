@@ -9,16 +9,18 @@ const SearchScreen = () => {
     const [filteredData, setFilteredData] = useState(data);
     const [city, setCity] = useState("");
 
-    const getApiData = async (term) => {
+    const getApiData = async () => {
+
         try {
             const response = await WeatherLayer.get("/data/2.5/weather", {
                 params: {
-                    lat: 10,
-                    lon: 10,
-                    appid: example
+                    q: search,
+                    appid: example,
+                    units: measurementSystem
                 }
-            }),
-                settheCity(response.data.search);
+            });
+
+            setCity(response.data);
 
             console.log("Search completed");
 
@@ -26,17 +28,6 @@ const SearchScreen = () => {
             console.error("API error:", error);
         }
     }
-
-    //To finally search a city
-    useEffect(() => {
-        axios.get('')
-            .then(response => {
-                setFilteredData(search)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    })
 
     return (
         <View>

@@ -4,6 +4,7 @@ import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from "r
 const HomeScreen = () => {
 
     const [yourCity, setCity] = useState("")
+    const [measurementSystem, setMeasurementSystem] = useState("Metric")
 
     const getApiData = async (term) => {
         try {

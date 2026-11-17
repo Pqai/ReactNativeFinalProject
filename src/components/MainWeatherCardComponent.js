@@ -5,16 +5,16 @@ const MainWeatherCardComponent = () => {
 
     //put this in a touchableopacity on the home screen.
     return (
-        <View>
-            <View>
+        <View style={styles.container}>
+            <View style={styles.textInformation}>
                 <Text>City</Text>
                 <Text>Country</Text>
 
                 <Text>Temperature</Text>
 
-                <TouchableOpacity
-
-                />
+                <TouchableOpacity>
+                    <Text>Farenheit</Text>
+                </TouchableOpacity>
             </View>
             <View>
                 <Image />
@@ -25,6 +25,9 @@ const MainWeatherCardComponent = () => {
 
 const styles = StyleSheet.create({
     container: {
+
+    },
+    textInformation: {
 
     }
 })
