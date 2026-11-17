@@ -2,11 +2,26 @@ import React, { useReducer, useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import SearchBarComponent from '../components/SearchBarComponent';
 import axios from 'axios';
-
+import WeatherLayer from '../api/WeatherLayer';
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
     const [filteredData, setFilteredData] = useState(data);
+    const [city, setCity] = useState("");
+
+    const getApiData = async (term) => {
+        try {
+            const response = await WeatherLayer.get("/search", {
+                params: {
+
+                }
+            }),
+                setCity(response.data.search);
+
+        } catch (error) {
+            console.error("API error:", error);
+        }
+    }
 
     //To finally search a city
     useEffect(() => {
