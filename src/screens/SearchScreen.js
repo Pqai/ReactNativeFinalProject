@@ -50,7 +50,7 @@ const SearchScreen = () => {
                 renderItem={({ item }) => (
                     <View style={styles.miniWeatherCard}>
                         <MainWeatherCardComponent
-                            city={item.name}
+                            city={item.city}
                             country={item.country}
                             temperature={item.temperature}
                         //Fix these later

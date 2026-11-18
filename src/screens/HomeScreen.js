@@ -33,8 +33,8 @@ const HomeScreen = ({ navigation }) => {
 
             <TouchableOpacity onPress={navigation.navigate("DetailedWeather")}> {/**Fix this later */}
                 <MainWeatherCardComponent
-                //city={ }
-                //country={ }
+                    //city={ }
+                    country={sys.country}
                 //temperature={ }
                 //measurementSystem={ }
                 />

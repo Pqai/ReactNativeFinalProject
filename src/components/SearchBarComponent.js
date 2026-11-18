@@ -7,7 +7,9 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
 
     return (
-        <View>
+        <View style={styles.container}>
+            <BackButtonComponent />
+
             <TextInput
                 style={styles.searchBar}
                 placeholder="Enter location"
@@ -27,9 +29,15 @@ const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-
+        flex: 1,
+        flexDirection: "row",
+        backgroundColor: "#a47ea2"
     },
     searchBar: {
+        fontSize: 40,
+        fontWeight: "bold"
+    },
+    backButtonContainer: {
 
     }
 })
