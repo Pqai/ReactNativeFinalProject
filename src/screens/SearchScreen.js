@@ -11,14 +11,13 @@ const SearchScreen = () => {
     const [city, setCity] = useState("");
 
     //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    const getApiData = async (searchCityKey) => {
+    const getApiData = async (searchCityKey, measuremetSystem) => {
 
         try {
             const response = await WeatherLayer.get("/data/2.5/weather", {
                 params: {
-                    q: search,
-                    appid: example,
-                    units: measurementSystem
+                    q: searchCityKey,
+                    units: measuremetSystem,
                 }
             });
 
