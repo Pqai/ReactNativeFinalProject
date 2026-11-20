@@ -1,11 +1,9 @@
 
 
-const KelvinToFarenheitComp = () => {
+const KelvinToFarenheitComp = (kelvin, farenheit) => {
 
     return (
-        <View>
-
-        </View>
+        farenheit = 1.8 * (kelvin - 273) + 32
     )
 }
 

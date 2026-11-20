@@ -1,13 +1,10 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const KelvinToCelsiusComp = () => {
+const KelvinToCelsiusComp = (kelvin, celsius) => {
 
-    //put this in a touchableopacity on the home screen.
     return (
-        <View>
-
-        </View>
+        celsius = kelvin - 273.15
     )
 }
 
