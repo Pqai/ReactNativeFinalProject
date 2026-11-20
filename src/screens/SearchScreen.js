@@ -11,13 +11,14 @@ const SearchScreen = () => {
     const [city, setCity] = useState("");
 
     //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    const getApiData = async (searchCityKey, measuremetSystem) => {
+    const getApiData = async (searchCityKey, measurementSystem) => {
 
         try {
-            const response = await WeatherLayer.get("/data/2.5/weather", {
+            const response = await WeatherLayer.get("/geo/1.0/direct", {
                 params: {
                     q: searchCityKey,
-                    units: measuremetSystem,
+                    limit: 3,
+                    units: measurementSystem,
                 }
             });
 
@@ -40,6 +41,7 @@ const SearchScreen = () => {
                     onChangeTerm={(newSearch) => {
                         setSearch(newSearch);
                     }}
+                    searchCity={search}
                 />
 
             </View>

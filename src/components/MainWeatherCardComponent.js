@@ -1,24 +1,30 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const MainWeatherCardComponent = (city, country, temperature, measurementSystem) => {
+const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements) => {
 
     //put this in a touchableopacity on the home screen.
     return (
         <View style={styles.container}>
             <View style={styles.textInformationSide}>
-                <Text>{city}</Text>
-                <Text>{country}</Text>
+                <Text style={styles.cityName}>{city}</Text>
+                <Text style={styles.countryName}>{country}</Text>
 
-                <Text>{temperature}</Text>
+                <Text style={styles.temperatureInfo}>{temperature}</Text>
 
-                <TouchableOpacity>
-                    <Text>{measurementSystem}</Text>
+                <TouchableOpacity
+                    style={styles.switchMeasurementsButton}
+                    onPress={changeMeasurements}
+                >
+                    <Text style={styles.measurementSystemText}>{measurementSystem}</Text>
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.weatherIcon}>
-                <Image />
+            <View style={styles.weatherIconSide}>
+                <Image
+                    style={styles.weatherIcon}
+                    source={uri: item.image_url}
+                />
             </View>
         </View>
     )
@@ -26,13 +32,36 @@ const MainWeatherCardComponent = (city, country, temperature, measurementSystem)
 
 const styles = StyleSheet.create({
     container: {
-
+        flex: 1,
+        margin: 20
     },
     textInformationSide: {
 
     },
+    weatherIconSide: {
+
+    },
     weatherIcon: {
 
+    },
+    cityName: {
+        fontSize: 25,
+    },
+    countryName: {
+        fontSize: 20,
+
+    },
+    temperatureInfo: {
+        fontSize: 40,
+
+    },
+    switchMeasurementsButton: {
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: "#000000"
+    },
+    measurementSystemText: {
+        fontSize: 10
     }
 })
 

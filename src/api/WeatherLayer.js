@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-//this is for the home screen
 export default axios.create({
     baseURL: "http://api.openweathermap.org",
     params: {

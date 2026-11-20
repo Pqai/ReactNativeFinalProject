@@ -6,7 +6,11 @@ import SearchBarComponent from '../components/SearchBarComponent';
 const HomeScreen = ({ navigation }) => {
 
     const [yourCity, setCity] = useState("")
-    const [measurementSystem, setMeasurementSystem] = useState("Metric")
+    const [measurementSystem, setMeasurementSystem] = useState(true)
+
+    function setMeasurementSystems(celsOrFaren) {
+        return celsOrFaren ? "Metric" : "Imperial"
+    }
 
     const getApiData = async (term) => {
         try {
