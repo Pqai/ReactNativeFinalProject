@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
 
         }
     }
-
+    //https://api.openweathermap.org/data/2.5/weather?lat=51.0501&lon=-114.0853&appid={API key}
     return (
         <View style={styles.MainContainer}>
             <Image />
@@ -37,9 +37,9 @@ const HomeScreen = ({ navigation }) => {
 
             <TouchableOpacity onPress={navigation.navigate("DetailedWeather")}> {/**Fix this later */}
                 <MainWeatherCardComponent
-                    //city={ }
-                    country={sys.country}
-                //temperature={ }
+                    city={yourCity.city}
+                    country={yourCity.sys.country}
+                    temperature={yourCity.main.temp}
                 //measurementSystem={ }
                 />
             </TouchableOpacity>

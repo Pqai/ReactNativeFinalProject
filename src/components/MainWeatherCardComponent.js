@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements) => {
+const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements, image_url) => {
 
     //put this in a touchableopacity on the home screen.
     return (
@@ -23,7 +23,7 @@ const MainWeatherCardComponent = (city, country, temperature, measurementSystem,
             <View style={styles.weatherIconSide}>
                 <Image
                     style={styles.weatherIcon}
-                    source={uri: item.image_url}
+                    source={{ uri: image_url }}
                 />
             </View>
         </View>
