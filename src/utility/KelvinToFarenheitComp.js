@@ -1,5 +1,3 @@
-
-
 const KelvinToFarenheitComp = (kelvin, farenheit) => {
 
     return (

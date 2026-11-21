@@ -2,30 +2,33 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 //The Big weather card displayed on the home menu and detailed weather screen
-const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements, image_url, navigateToPage) => {
+const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements, image_url) => {
 
     //put this in a touchableopacity on the home screen.
     return (
         <View style={styles.container}>
-            <View style={styles.textInformationSide}>
-                <Text style={styles.cityName}>{city}</Text>
-                <Text style={styles.countryName}>{country}</Text>
+            <View style={styles.innerInformationContainer}>
 
-                <Text style={styles.temperatureInfo}>{temperature}</Text>
+                <View style={styles.textInformationSide}>
+                    <Text style={styles.cityName}>{city}</Text>
+                    <Text style={styles.countryName}>{country}</Text>
 
-                <TouchableOpacity
-                    style={styles.switchMeasurementsButton}
-                    onPress={changeMeasurements}
-                >
-                    <Text style={styles.measurementSystemText}>{measurementSystem}</Text>
-                </TouchableOpacity>
-            </View>
+                    <Text style={styles.temperatureInfo}>{temperature}</Text>
 
-            <View style={styles.weatherIconSide}>
-                <Image
-                    style={styles.weatherIcon}
-                    source={{ uri: image_url }}
-                />
+                    <TouchableOpacity
+                        style={styles.switchMeasurementsButton}
+                        onPress={changeMeasurements}
+                    >
+                        <Text style={styles.measurementSystemText}>{measurementSystem}</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.weatherIconSide}>
+                    <Image
+                        style={styles.weatherIcon}
+                        source={{ uri: image_url }}
+                    />
+                </View>
             </View>
         </View>
     )
@@ -40,10 +43,11 @@ const styles = StyleSheet.create({
     },
     textInformationSide: {
         flex: 1,
-
+        flexDirection: "column"
     },
     weatherIconSide: {
         flex: 1,
+        alignItems: "center"
     },
     weatherIcon: {
         width: 5,
@@ -67,6 +71,9 @@ const styles = StyleSheet.create({
     },
     measurementSystemText: {
         fontSize: 10
+    },
+    innerInformationContainer: {
+
     }
 })
 

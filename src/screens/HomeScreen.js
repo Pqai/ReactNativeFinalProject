@@ -1,7 +1,10 @@
 import React, { useReducer, useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInsets, } from 'react-native-safe-area-context';
+
 import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
 import SearchBarComponent from '../components/SearchBarComponent';
+
 
 const HomeScreen = ({ navigation }) => {
 

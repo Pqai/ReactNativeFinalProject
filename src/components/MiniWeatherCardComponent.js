@@ -5,17 +5,20 @@ const MiniWeatherCardComponent = (city, country, temperature, measurementSystem,
 
     return (
         <View style={styles.miniWeatherCard}>
-            <View style={styles.textInformationSide}>
-                <Text style={styles.cityNameText}>{city}</Text>
-                <Text style={styles.countryNameText}>{country}</Text>
+            <View style={styles.innerInformationContainer}>
 
-                <Text style={styles.temperatureText}>{temperature}</Text>
-            </View>
+                <View style={styles.textInformationSide}>
+                    <Text style={styles.cityNameText}>{city}</Text>
+                    <Text style={styles.countryNameText}>{country}</Text>
 
-            <View style={styles.weatherIconSide}>
-                <Image style={styles.weatherIcon}
+                    <Text style={styles.temperatureText}>{temperature}</Text>
+                </View>
 
-                />
+                <View style={styles.weatherIconSide}>
+                    <Image style={styles.weatherIcon}
+
+                    />
+                </View>
             </View>
         </View>
     )
@@ -44,6 +47,9 @@ const styles = StyleSheet.create({
     weatherIcon: {
         width: 5,
         height: 5,
+    },
+    innerInformationContainer: {
+
     }
 })
 

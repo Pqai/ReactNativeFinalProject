@@ -1,9 +1,12 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInsets, } from 'react-native-safe-area-context';
+
 import SearchBarComponent from '../components/SearchBarComponent';
 import axios from 'axios';
 import WeatherLayer from '../api/WeatherLayer';
-import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
+import MiniWeatherCardComponent from '../components/MiniWeatherCardComponent';
+
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
@@ -52,18 +55,22 @@ const SearchScreen = () => {
             />
 
             <FlatList
-                data={await}
+                data={city}
                 keyExtractor={(k) => k.id}
                 renderItem={({ item }) => (
                     <View
                         style={styles.miniWeatherCard}
                     >
-                        <MainWeatherCardComponent
-                            city={item.city}
-                            country={item.country}
-                            temperature={item.temperature}
-                        //Fix these later
-                        />
+                        <TouchableOpacity
+                            onPress={() => goToCityWeatherScreen}
+                        >
+                            <MiniWeatherCardComponent
+                                city={item.city}
+                                country={item.country}
+                                temperature={item.temperature}
+                            //Fix these later
+                            />
+                        </TouchableOpacity>
                     </View>
                 )}
             />
@@ -76,7 +83,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     searchBar: {
-        backgroundColor: '#2f9680',
+        //backgroundColor: '#2f9680',
         width: '70%',
         marginTop: 20
     },
