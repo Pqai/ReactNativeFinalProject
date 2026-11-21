@@ -10,7 +10,6 @@ import MiniWeatherCardComponent from '../components/MiniWeatherCardComponent';
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
-    const [filteredData, setFilteredData] = useState(data);
     const [city, setCity] = useState("");
 
     const navigation = useNavigation();
@@ -29,13 +28,26 @@ const SearchScreen = () => {
                 params: {
                     q: searchCityKey,
                     limit: 3,
-                    units: measurementSystem,
                 }
             });
 
             setCity(response.data);
 
             console.log("Search completed");
+
+            try {
+                const weatherResponse = await WeatherLayer.get("/data/2.5", {
+                    params: {
+                        lat: city.data.lat,
+                        lon: city.data.lon,
+                        units: measurementSystem,
+                    }
+                });
+
+                //Append to city state?
+            } catch {
+
+            }
 
         } catch (error) {
             console.error("API error:", error);
@@ -81,11 +93,6 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1
-    },
-    searchBar: {
-        //backgroundColor: '#2f9680',
-        width: '70%',
-        marginTop: 20
     },
     miniWeatherCard: {
         margin: 10,

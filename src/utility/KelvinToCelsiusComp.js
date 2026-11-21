@@ -1,7 +1,7 @@
-const KelvinToCelsiusComp = (kelvin, celsius) => {
+const KelvinToCelsiusComp = (kelvin) => {
 
     return (
-        celsius = kelvin - 273.15
+        kelvin - 273.15
     )
 }
 

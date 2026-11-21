@@ -8,11 +8,15 @@ import SearchBarComponent from '../components/SearchBarComponent';
 
 const HomeScreen = ({ navigation }) => {
 
-    const [yourCity, setCity] = useState("")
+    const [yourCity, setYourCity] = useState("")
     const [measurementSystem, setMeasurementSystem] = useState(true)
 
     function setMeasurementSystems(celsOrFaren) {
         return celsOrFaren ? "Metric" : "Imperial"
+    }
+
+    function changeMeasurements() {
+        setMeasurementSystem(previousState => !previousState);
     }
 
     const getApiData = async (term) => {
@@ -36,16 +40,21 @@ const HomeScreen = ({ navigation }) => {
             <SearchBarComponent />
 
             <View style={styles.HeaderContainer}>
-                <Text style={styles.HeaderText}>Your Weather</Text>
-                <View style={styles.DashLine}>{/**Dash Line that act slik an underline for the header*/}</View>
+                <View style={styles.TheMainDeco}>
+                    <Text style={styles.HeaderText}>Your Weather</Text>
+                    <View style={styles.DashLine}>{/**Dash Line that act slik an underline for the header*/}</View>
+                </View>
+
+                <View style={styles.EmptyBlock}>{/** Empty Block to allow open styling needed in the wireframe*/}</View>
             </View>
 
-            <TouchableOpacity onPress={navigation.navigate("DetailedWeather")}> {/**Fix this later */}
+            <TouchableOpacity onPress={() => navigation.navigate("DetailedWeather")}> {/**Fix this later */}
                 <MainWeatherCardComponent
-                    city={yourCity.city}
+                    city={yourCity.name}
                     country={yourCity.sys.country}
                     temperature={yourCity.main.temp}
-                //measurementSystem={ }
+                    measurementSystem={measurementSystem}
+                    changeMeasurements={changeMeasurements}
                 />
             </TouchableOpacity>
         </View>
