@@ -8,8 +8,10 @@ const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
 
     return (
         <View style={styles.container}>
+            {/**Navigating to a previous screen (Detailed -> Search -> Home) on home dissappears*/}
             <BackButtonComponent />
 
+            {/**Where users write what city they wish to search */}
             <TextInput
                 style={styles.searchBar}
                 placeholder="Enter location"
@@ -18,6 +20,7 @@ const SearchBarComponent = ({ term, onChangeTerm, searchCity, navigation }) => {
                 onPress={() => navigation.navigate("Search")}
             />
 
+            {/**When Pressed will finally send an api call to search a cities weather so that constant api calls are not made*/}
             <TouchableOpacity
                 style={styles.backButtonContainer}
                 onPress={searchCity}>
@@ -31,7 +34,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "row",
-        backgroundColor: "#a47ea2"
+        backgroundColor: "#a47ea2",
+        borderRadius: 10
     },
     searchBar: {
         fontSize: 40,

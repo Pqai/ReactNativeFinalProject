@@ -28,12 +28,14 @@ const HomeScreen = ({ navigation }) => {
     //https://api.openweathermap.org/data/2.5/weather?lat=51.0501&lon=-114.0853&appid={API key}
     return (
         <View style={styles.MainContainer}>
-            <Image />
+            <TopBarLogoComponent />
 
             <SearchBarComponent />
 
-            <Text>Your Weather</Text>
-            <View>{/**Dash Line */}</View>
+            <View style={styles.HeaderContainer}>
+                <Text style={styles.HeaderText}>Your Weather</Text>
+                <View style={styles.DashLine}>{/**Dash Line that act slik an underline for the header*/}</View>
+            </View>
 
             <TouchableOpacity onPress={navigation.navigate("DetailedWeather")}> {/**Fix this later */}
                 <MainWeatherCardComponent
@@ -50,6 +52,19 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1
+    },
+    HeaderText: {
+
+    },
+    HeaderContainer: {
+
+    },
+    DashLine: {
+        backgroundColor: "#000000"
+
+    },
+    EmptyBlock: {
+
     }
 })
 

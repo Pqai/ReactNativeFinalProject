@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements, image_url) => {
+//The Big weather card displayed on the home menu and detailed weather screen
+const MainWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements, image_url, navigateToPage) => {
 
     //put this in a touchableopacity on the home screen.
     return (
@@ -33,16 +34,20 @@ const MainWeatherCardComponent = (city, country, temperature, measurementSystem,
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 20
+        //margin: 20,
+        flexDirection: "row",
+        padding: 10
     },
     textInformationSide: {
+        flex: 1,
 
     },
     weatherIconSide: {
-
+        flex: 1,
     },
     weatherIcon: {
-
+        width: 5,
+        height: 5,
     },
     cityName: {
         fontSize: 25,

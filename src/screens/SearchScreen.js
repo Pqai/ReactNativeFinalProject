@@ -10,6 +10,14 @@ const SearchScreen = () => {
     const [filteredData, setFilteredData] = useState(data);
     const [city, setCity] = useState("");
 
+    const navigation = useNavigation();
+
+    const goToCityWeatherScreen = () => {
+        navigation.navigate('DetailedWeather', {
+
+        })
+    }
+
     //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
     const getApiData = async (searchCityKey, measurementSystem) => {
 
@@ -33,24 +41,23 @@ const SearchScreen = () => {
 
     return (
         <View style={styles.MainContainer}>
-            <View style={styles.searchBar}>
-                <BackButtonComponent />
+            <TopBarLogoComponent />
 
-                <SearchBarComponent
-                    term={search}
-                    onChangeTerm={(newSearch) => {
-                        setSearch(newSearch);
-                    }}
-                    searchCity={search}
-                />
-
-            </View>
+            <SearchBarComponent
+                term={search}
+                onChangeTerm={(newSearch) => {
+                    setSearch(newSearch);
+                }}
+                searchCity={search}
+            />
 
             <FlatList
                 data={await}
                 keyExtractor={(k) => k.id}
                 renderItem={({ item }) => (
-                    <View style={styles.miniWeatherCard}>
+                    <View
+                        style={styles.miniWeatherCard}
+                    >
                         <MainWeatherCardComponent
                             city={item.city}
                             country={item.country}
@@ -74,7 +81,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     miniWeatherCard: {
-
+        margin: 10,
     }
 })
 
