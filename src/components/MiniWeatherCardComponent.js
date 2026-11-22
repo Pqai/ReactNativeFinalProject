@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 
 //A smaller version of the main weather card meant for being displayed in the Flatlist when searching on the search screen
-const MiniWeatherCardComponent = (city, country, temperature, measurementSystem, changeMeasurements, image_url, navigateToPage) => {
+const MiniWeatherCardComponent = (city, country, temperature, image_url, navigateToPage) => {
 
     return (
         <View style={styles.miniWeatherCard}>

@@ -14,14 +14,28 @@ const SearchScreen = () => {
 
     const navigation = useNavigation();
 
-    const goToCityWeatherScreen = () => {
-        navigation.navigate('DetailedWeather', {
+    const goToCityWeatherScreen = async (item) => {
 
-        })
+        try {
+            const weatherResponse = await WeatherLayer.get("/data/2.5", {
+                params: {
+                    lat: city.data.lat,
+                    lon: city.data.lon,
+                    units: measurementSystem,
+                }
+            });
+
+            navigation.navigate("DetailedWeather", {
+                weatherData: weatherResponse.data
+            })
+
+        } catch (error) {
+            console.error("Weather retrieval API error:", error)
+        }
     }
 
     //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    const getApiData = async (searchCityKey, measurementSystem) => {
+    const getApiData = async (searchCityKey) => {
 
         try {
             const response = await WeatherLayer.get("/geo/1.0/direct", {
@@ -35,22 +49,8 @@ const SearchScreen = () => {
 
             console.log("Search completed");
 
-            try {
-                const weatherResponse = await WeatherLayer.get("/data/2.5", {
-                    params: {
-                        lat: city.data.lat,
-                        lon: city.data.lon,
-                        units: measurementSystem,
-                    }
-                });
-
-                //Append to city state?
-            } catch {
-
-            }
-
         } catch (error) {
-            console.error("API error:", error);
+            console.error("Geolocating API error:", error);
         }
     }
 
@@ -77,10 +77,10 @@ const SearchScreen = () => {
                             onPress={() => goToCityWeatherScreen}
                         >
                             <MiniWeatherCardComponent
-                                city={item.city}
+                                city={item.name}
                                 country={item.country}
-                                temperature={item.temperature}
-                            //Fix these later
+                                temperature={item.temp}
+                                image_url={item.icon}
                             />
                         </TouchableOpacity>
                     </View>
