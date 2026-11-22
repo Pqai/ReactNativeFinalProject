@@ -21,7 +21,9 @@ const BackButtonComponent = () => {
 
 const styles = StyleSheet.create({
     backButtonContainer: {
-        margin: 5
+        margin: 5,
+        width: 10,
+        height: 10,
     }
 })
 

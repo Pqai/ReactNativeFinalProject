@@ -39,14 +39,17 @@ const styles = StyleSheet.create({
         flex: 1,
         //margin: 20,
         flexDirection: "row",
-        padding: 10
+        padding: 10,
+        height: "100%",
+        width: "100%"
     },
     textInformationSide: {
-        flex: 1,
-        flexDirection: "column"
+        flex: 2.5,
+        flexDirection: "column",
+        justifyContent: "center",
     },
     weatherIconSide: {
-        flex: 1,
+        flex: 1.5,
         alignItems: "center"
     },
     weatherIcon: {
@@ -73,7 +76,8 @@ const styles = StyleSheet.create({
         fontSize: 10
     },
     innerInformationContainer: {
-
+        paddingVertical: 15,
+        paddingHorizontal: 5
     }
 })
 

@@ -42,7 +42,9 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     backButtonContainer: {
-
+        margin: 5,
+        width: 10,
+        height: 10,
     }
 })
 

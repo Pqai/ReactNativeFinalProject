@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     },
     textInformation: {
-
+        fontSize: 10,
     },
     textInformationData: {
-
+        fontSize: 20,
     }
 })
 

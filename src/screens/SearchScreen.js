@@ -1,6 +1,7 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInsets, } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 import SearchBarComponent from '../components/SearchBarComponent';
 import axios from 'axios';
@@ -10,7 +11,7 @@ import MiniWeatherCardComponent from '../components/MiniWeatherCardComponent';
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState([]);
 
     const navigation = useNavigation();
 
