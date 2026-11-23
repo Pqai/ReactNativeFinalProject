@@ -8,6 +8,8 @@ import SearchBarComponent from '../components/SearchBarComponent';
 import axios from 'axios';
 import WeatherLayer from '../api/WeatherLayer';
 import MiniWeatherCardComponent from '../components/MiniWeatherCardComponent';
+import TopBarLogoComponent from '../components/TopBarLogoComponent';
+
 
 const SearchScreen = () => {
 

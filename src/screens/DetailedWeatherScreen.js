@@ -6,6 +6,7 @@ import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInset
 import SearchBarComponent from '../components/SearchBarComponent';
 import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
 import DetailWeatherCardsComponent from '../components/DetailWeatherCardsComponent';
+import TopBarLogoComponent from '../components/TopBarLogoComponent';
 
 
 const DetailedWeatherScreen = ({ route }) => {

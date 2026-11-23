@@ -5,6 +5,7 @@ import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInset
 
 import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
 import SearchBarComponent from '../components/SearchBarComponent';
+import TopBarLogoComponent from '../components/TopBarLogoComponent';
 
 
 const HomeScreen = ({ navigation }) => {
