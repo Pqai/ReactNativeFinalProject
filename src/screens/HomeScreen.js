@@ -3,6 +3,7 @@ import { useRoute } from '@react-navigation/native';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInsets, } from 'react-native-safe-area-context';
 
+import WeatherLayer from '../api/WeatherLayer';
 import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
 import SearchBarComponent from '../components/SearchBarComponent';
 import TopBarLogoComponent from '../components/TopBarLogoComponent';
