@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 //Reusable cards to store other weather data on the WeatherDeatils screen such as humidity or visibility
 const DetailWeatherCardsComponent = (weatherDetailName, weatherDetails) => {

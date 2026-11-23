@@ -35,9 +35,12 @@ const DetailedWeatherScreen = ({ route }) => {
                     weatherDetailName={"Visibility"}
                     weatherDetails={route.main.humidity}
                 />
-                <DetailWeatherCardsComponent
-                    weatherDetailName={"Humidity"}
+                <SplitDetailWeatherCardsComponent
+                    weatherDetailName={"Sunrise"}
                     weatherDetails={route.main.humidity}
+
+                    secondWeatherDetailName={"Sunset"}
+                    secondWeatherDetails={route.main.humidity}
                 />
             </View>
 
