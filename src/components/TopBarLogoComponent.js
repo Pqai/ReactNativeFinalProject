@@ -10,6 +10,7 @@ const TopBarLogoComponent = () => {
         <View style={styles.container}>
             <Image
                 style={styles.logoContainer}
+                source={('../assets/globeLogo.png')}
             />
         </View>
     )
@@ -22,8 +23,8 @@ const styles = StyleSheet.create({
         alignItems: "flex-start"
     },
     logoContainer: {
-        width: 5,
-        height: 5,
+        width: 20,
+        height: 20,
     },
 })
 

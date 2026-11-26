@@ -10,13 +10,16 @@ import WeatherLayer from '../api/WeatherLayer';
 import MiniWeatherCardComponent from '../components/MiniWeatherCardComponent';
 import TopBarLogoComponent from '../components/TopBarLogoComponent';
 import useGelocatingApi from '../hooks/useGeolocatingApi';
+import useDetailWeatherScreen from '../hooks/useDetailWeatherScreen';
+import { useMeasurementSystemContext } from '../hooks/useMeasurementSystem';
 
 
 const SearchScreen = () => {
 
+    const { measurementSystem, setMeasurementSystem } = useContext(useMeasurementSystemContext);
     const [search, setSearch] = useState('');
-    //const [city, setCity] = useState([]);
-    const [searchedCity, setSearchedCity] = useGelocatingApi();
+    const [searchedCity, setSearchedCity] = useGelocatingApi(search);
+    const [getCityWeather, , isLoading, error] = useDetailWeatherScreen(measurementSystem);
 
     const navigation = useNavigation();
 

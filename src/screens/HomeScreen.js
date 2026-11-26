@@ -12,9 +12,9 @@ import TopBarLogoComponent from '../components/TopBarLogoComponent';
 const HomeScreen = ({ navigation }) => {
 
     //const [yourCity, setYourCity] = useState("");
-    const [measurementSystem, setMeasurementSystem] = useState(true);
+    //const [measurementSystem, setMeasurementSystem] = useState(true);
     const [yourCity, setSearchedCity] = useGelocatingApi();
-
+    const { measurementSystem, setMeasurementSystem } = useContext(measurementSystem);
 
     useEffect(() => {
 
