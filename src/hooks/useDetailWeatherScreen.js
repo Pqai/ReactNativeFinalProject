@@ -1,22 +1,36 @@
 import { useState, useEffect, useState } from "react";
 import WeatherLayer from "../api/WeatherLayer";
+import { useNavigation } from "@react-navigation/native";
 
-const useDetailWeatherScreen = async (item) => {
+const useDetailWeatherScreen = (measurementSystem) => {
 
-    try {
-        const weatherResponse = await WeatherLayer.get("/data/2.5", {
-            params: {
-                lat: city.data.lat,
-                lon: city.data.lon,
-                units: measurementSystem,
-            }
-        });
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-        navigation.navigate("DetailedWeather", {
-            weatherData: weatherResponse.data
-        })
+    const navigation = useNavigation();
+    //this was goToCityWeatherScreen in search screen.
 
-    } catch (error) {
-        console.error("Weather retrieval API error:", error)
+    const getCityWeather = async (item) => {
+
+        try {
+            const weatherResponse = await WeatherLayer.get("/data/2.5/weather", {
+                params: {
+                    lat: item.lat,
+                    lon: item.lon,
+                    units: measurementSystem,
+                }
+            });
+
+            navigation.navigate("DetailedWeather", {
+                weatherData: weatherResponse.data
+            })
+
+        } catch (error) {
+            console.error("Weather retrieval API error:", error)
+        }
     }
+
+    return [getCityWeather, isLoading, error];
 }
+
+export default useDetailWeatherScreen;

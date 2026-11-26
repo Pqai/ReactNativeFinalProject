@@ -9,54 +9,16 @@ import axios from 'axios';
 import WeatherLayer from '../api/WeatherLayer';
 import MiniWeatherCardComponent from '../components/MiniWeatherCardComponent';
 import TopBarLogoComponent from '../components/TopBarLogoComponent';
+import useGelocatingApi from '../hooks/useGeolocatingApi';
 
 
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
-    const [city, setCity] = useState([]);
+    //const [city, setCity] = useState([]);
+    const [searchedCity, setSearchedCity] = useGelocatingApi();
 
     const navigation = useNavigation();
-
-    const goToCityWeatherScreen = async (item) => {
-
-        try {
-            const weatherResponse = await WeatherLayer.get("/data/2.5", {
-                params: {
-                    lat: city.data.lat,
-                    lon: city.data.lon,
-                    units: measurementSystem,
-                }
-            });
-
-            navigation.navigate("DetailedWeather", {
-                weatherData: weatherResponse.data
-            })
-
-        } catch (error) {
-            console.error("Weather retrieval API error:", error)
-        }
-    }
-
-    //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    const getApiData = async (searchCityKey) => {
-
-        try {
-            const response = await WeatherLayer.get("/geo/1.0/direct", {
-                params: {
-                    q: searchCityKey,
-                    limit: 3,
-                }
-            });
-
-            setCity(response.data);
-
-            console.log("Search completed");
-
-        } catch (error) {
-            console.error("Geolocating API error:", error);
-        }
-    }
 
     return (
         <View style={styles.MainContainer}>
@@ -154,3 +116,45 @@ export default SearchScreen;
     "cod": 200
 }
  */
+
+
+/*
+ const goToCityWeatherScreen = async (item) => {
+
+     try {
+         const weatherResponse = await WeatherLayer.get("/data/2.5", {
+             params: {
+                 lat: city.data.lat,
+                 lon: city.data.lon,
+                 units: measurementSystem,
+             }
+         });
+
+         navigation.navigate("DetailedWeather", {
+             weatherData: weatherResponse.data
+         })
+
+     } catch (error) {
+         console.error("Weather retrieval API error:", error)
+     }
+ }
+
+ //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+ const getApiData = async (searchCityKey) => {
+
+     try {
+         const response = await WeatherLayer.get("/geo/1.0/direct", {
+             params: {
+                 q: searchCityKey,
+                 limit: 3,
+             }
+         });
+
+         setCity(response.data);
+
+         console.log("Search completed");
+
+     } catch (error) {
+         console.error("Geolocating API error:", error);
+     }
+ } */

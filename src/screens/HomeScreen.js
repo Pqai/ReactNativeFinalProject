@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInsets, } from 'react-native-safe-area-context';
@@ -11,8 +11,14 @@ import TopBarLogoComponent from '../components/TopBarLogoComponent';
 
 const HomeScreen = ({ navigation }) => {
 
-    const [yourCity, setYourCity] = useState("")
-    const [measurementSystem, setMeasurementSystem] = useState(true)
+    //const [yourCity, setYourCity] = useState("");
+    const [measurementSystem, setMeasurementSystem] = useState(true);
+    const [yourCity, setSearchedCity] = useGelocatingApi();
+
+
+    useEffect(() => {
+
+    }, {})
 
     function setMeasurementSystems(celsOrFaren) {
         return celsOrFaren ? "Metric" : "Imperial"
@@ -22,19 +28,6 @@ const HomeScreen = ({ navigation }) => {
         setMeasurementSystem(previousState => !previousState);
     }
 
-    const getApiData = async (term) => {
-        try {
-            const responese = await WeatherLayer.get("/search", {
-
-                params: {
-
-                }
-            })
-        }
-        catch (error) {
-
-        }
-    }
     //https://api.openweathermap.org/data/2.5/weather?lat=51.0501&lon=-114.0853&appid={API key}
     return (
         <View style={styles.MainContainer}>
