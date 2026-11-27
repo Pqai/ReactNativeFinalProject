@@ -1,3 +1,22 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const useMeasurementSystemContext = createContext(null);
+const MeasurementSystemContext = createContext(null);
+
+export const MeasureMentSystemProvider = ({ children }) => {
+    const [measurementSystem, setMeasurementSystem] = useState("metric");
+
+    return (
+        <MeasurementSystemContext.Provider
+            value={{
+                measurementSystem,
+                setMeasurementSystem
+            }}
+        >
+            {children}
+        </MeasurementSystemContext.Provider>
+    )
+}
+
+export const useMeasurementSystemContext = () => {
+    return useContext(MeasurementSystemContext);
+}

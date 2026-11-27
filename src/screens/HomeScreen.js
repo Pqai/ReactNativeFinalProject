@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState, useContext } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInsets, } from 'react-native-safe-area-context';
@@ -7,14 +7,15 @@ import WeatherLayer from '../api/WeatherLayer';
 import MainWeatherCardComponent from '../components/MainWeatherCardComponent';
 import SearchBarComponent from '../components/SearchBarComponent';
 import TopBarLogoComponent from '../components/TopBarLogoComponent';
-
+import useGelocatingApi from '../hooks/useGeolocatingApi';
+import { useMeasurementSystemContext } from '../hooks/useMeasurementSystem';
 
 const HomeScreen = ({ navigation }) => {
 
     //const [yourCity, setYourCity] = useState("");
     //const [measurementSystem, setMeasurementSystem] = useState(true);
     const [yourCity, setSearchedCity] = useGelocatingApi();
-    const { measurementSystem, setMeasurementSystem } = useContext(measurementSystem);
+    const { measurementSystem, setMeasurementSystem } = useMeasurementSystemContext();
 
     useEffect(() => {
 
@@ -62,18 +63,26 @@ const styles = StyleSheet.create({
         flex: 1
     },
     HeaderText: {
-
+        fontSize: 20,
+        fontWeight: "bold",
+        flex: 3
     },
     HeaderContainer: {
-
+        flex: 1,
+        flexDirection: "row"
     },
     DashLine: {
-        backgroundColor: "#000000"
-
+        backgroundColor: "#000000",
+        flex: 1
     },
     EmptyBlock: {
+        flex: 1
+    },
+    TheMainDeco: {
+        flex: 3,
+        flexDirection: "column"
+    },
 
-    }
 })
 
 export default HomeScreen;

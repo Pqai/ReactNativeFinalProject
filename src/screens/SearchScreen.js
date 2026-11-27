@@ -13,10 +13,9 @@ import useGelocatingApi from '../hooks/useGeolocatingApi';
 import useDetailWeatherScreen from '../hooks/useDetailWeatherScreen';
 import { useMeasurementSystemContext } from '../hooks/useMeasurementSystem';
 
-
 const SearchScreen = () => {
 
-    const { measurementSystem, setMeasurementSystem } = useContext(useMeasurementSystemContext);
+    const { measurementSystem, setMeasurementSystem } = useMeasurementSystemContext();
     const [search, setSearch] = useState('');
     const [searchedCity, setSearchedCity] = useGelocatingApi(search);
     const [getCityWeather, , isLoading, error] = useDetailWeatherScreen(measurementSystem);
@@ -36,14 +35,14 @@ const SearchScreen = () => {
             />
 
             <FlatList
-                data={city}
-                keyExtractor={(k) => k.id}
+                data={searchedCity}
+                keyExtractor={(item) => `${item.lat}-${item.lon}`}
                 renderItem={({ item }) => (
                     <View
                         style={styles.miniWeatherCard}
                     >
                         <TouchableOpacity
-                            onPress={() => goToCityWeatherScreen}
+                            onPress={() => getCityWeather(item)}
                         >
                             <MiniWeatherCardComponent
                                 city={item.name}

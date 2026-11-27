@@ -1,4 +1,4 @@
-import { useState, useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import WeatherLayer from "../api/WeatherLayer";
 
 const useGelocatingApi = (searchCityKey) => {
